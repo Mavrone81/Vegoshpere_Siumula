@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykai <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ykai <ykai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 18:14:17 by ykai              #+#    #+#             */
-/*   Updated: 2023/06/27 23:39:40 by sfu              ###   ########.fr       */
+/*   Created: 2023/06/25 19:15:50 by ykai              #+#    #+#             */
+/*   Updated: 2023/06/25 19:15:52 by ykai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-char	*ft_strncpy(char *dest, char *src, const int n)
+char	*ft_strupcase(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] -= 32;
+		}
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (str);
 }
-
 /*
 int main() {
 	char a[] = "dawg!";
 	char b[20];// Declare b array with a size of 20;
 	
-	printf("%s, %s\n", a,b); // Use %s to print a string
-	ft_strcpy(b,a);
-	
-	 printf("%s, %s\n", a,b); // Use %s to print a string
-}
-*/
+	printf("%s", a); 
+	printf("\n");
+    ft_strupcase(a);
+    
+  printf("%s", a); 
+}*/

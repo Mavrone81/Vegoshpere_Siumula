@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykai <ykai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 18:27:35 by ykai              #+#    #+#             */
-/*   Updated: 2023/06/25 18:27:40 by ykai             ###   ########.fr       */
+/*   Created: 2023/06/26 13:11:24 by ykai              #+#    #+#             */
+/*   Updated: 2023/06/28 00:02:13 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-//#include <stdio.h>
-int	ft_str_is_numeric(char *str)
+
+char	*ft_strcapitalize(char *str)
 {
-	int	i;
+	int		i;
+	int		cap;
+	char	a;
 
 	i = 0;
+	cap = 1;
 	while (str[i] != '\0')
 	{
-		if ((str[i] < '0' || str[i] > '9'))
-		{
-			return (0);
-		}
+		a = str[i];
+		if (cap == 1 && a >= 'a' && a <= 'z')
+			str[i] -= 32;
+		else if (cap == 0 && a >= 'A' && a <= 'Z')
+			str[i] += 32;
+		if (a < '0' || (a > '9' && a < 'A') || (a > 'Z' && a < 'a') || a > 'z')
+			cap = 1;
+		else
+			cap = 0;
 		i++;
 	}
-	return (1);
+	return (str);
 }
-
 /*
-int main()
+int main ()
 {
-    char a[] = "12345";
+    char str[] = "dAwGdAwG";
+    ft_strcapitalize(str);
     
-    int result = ft_str_is_numeric(a);
-    
-    printf("%d\n", result); // Print the result: 0 for non-alpha, 1 for alpha
-    
-    return 0;
-}
+    write(1,str,sizeof(str)-1);
+ }
 */
