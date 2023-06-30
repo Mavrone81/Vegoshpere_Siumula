@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ygoavec <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ykai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/07 22:21:28 by ygoavec           #+#    #+#             */
-/*   Updated: 2019/07/07 22:21:35 by ygoavec          ###   ########.fr       */
+/*   Created: 2023/06/24 16:24:10 by ykai              #+#    #+#             */
+/*   Updated: 2023/06/27 23:37:42 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+//#include <stdio.h>
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
-	
+
 	i = 0;
 	while (src[i] != '\0')
 	{
@@ -21,5 +23,20 @@ char	*ft_strcpy(char *dest, char *src)
 		i++;
 	}
 	dest[i] = '\0';
-	return(dest);
+	return (dest);
 }
+<<<<<<< HEAD
+=======
+
+/*
+int main() {
+	char c1[] = "dawg!";
+	char c2[20];// Declare b array with a size of 20;
+	
+	printf("%s, %s\n", c1,c2); // Use %s to print a string
+	ft_strcpy(c1,c2);
+	
+	 printf("%s, %s\n", c1,c2); // Use %s to print a string
+}
+*/
+>>>>>>> refs/remotes/origin/main
