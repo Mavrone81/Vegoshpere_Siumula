@@ -33,3 +33,22 @@ int     ft_strcmp(char *s1, char *s2)
     return (s1[i] - s2[i]);
 }
 
+int rush01(argc, **argv)
+{
+    if (argc != 2)
+    {
+        ft_putchar('\n');
+        return (0);
+    }
+    if (ft_strcmp(argv[1], "1 2 3 4 5 6 7 8 9") == 0)
+    {
+        ft_putchar('1');
+        ft_putchar('\n');
+    }
+    else
+    {
+        ft_putchar('0');
+        ft_putchar('\n');
+    }
+    return (0);
+}
