@@ -69,7 +69,7 @@ char *h = "4321";
     }
     while (argv[i] != '\0' && argv[i] <= 9)
     {
-        if (argv[i] == '4' && argv[i + 4] != '1')
+        if (argv[i + 12] == '4' && argv[i + 4] != '1')
         {
             ft_putchar(' ');
             ft_putchar(' ');
@@ -77,7 +77,12 @@ char *h = "4321";
             ft_putchar(' ');
             ft_putchar('\n');
         }
-        else if ()
+        else (argv[1 + 12] == '4' && argv[1 + 4] = 1)
         {
-
+            ft_putchar('1');
+            ft_putchar('2');
+            ft_putchar('3');
+            ft_putchar('4');
+            ft_putchar('\n');
         }
+        if 
