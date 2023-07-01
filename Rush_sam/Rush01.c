@@ -69,20 +69,28 @@ char *h = "4321";
     }
     while (argv[i] != '\0' && argv[i] <= 9)
     {
-        if (argv[i + 12] == '4' && argv[i + 4] != '1')
+        if (argv[i + 12] == '4' && argv[i + 4] == '1')
         {
-            ft_putchar(' ');
-            ft_putchar(' ');
-            ft_putchar(' ');
-            ft_putchar(' ');
-            ft_putchar('\n');
+            draw_line4;
         }
-        else (argv[1 + 12] == '4' && argv[1 + 4] = 1)
+        else if (argv[i + 12] == '3' && argv[i + 4] == '1')
         {
-            ft_putchar('1');
-            ft_putchar('2');
-            ft_putchar('3');
-            ft_putchar('4');
-            ft_putchar('\n');
-        }
-        if 
+            if (argv[i] == '3' and argv[i + 8] == '1')
+            {
+                choose_line3_1;
+            }
+            else
+            {
+                return (0);
+            }
+        else if (argv[i + 12] == '3' && argv[i + 4] == '1')
+        {
+            if (argv[i] == '3' && argv[i + 8] == '2')
+            {
+                choose_line3_2;
+            }
+            else
+            {
+                return (0);
+            }
+        
