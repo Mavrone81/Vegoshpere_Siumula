@@ -9,7 +9,7 @@
 /*   Updated: 2023/07/01 22:47:34 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+// test for git
 #include <unistd.h>
 
 void    ft_putchar(char c)
@@ -46,39 +46,15 @@ int j = 0;
     while(argv[i + 12] != '\0' && argv[i + 12] <= 9)
     {
         if(argv[i + 12] == '4' && argv[i + 4] == '1')
-        {
             draw_line4();
-        }
         else if(argv[i + 12] == '3' && argv[i + 4] == '1')
-        {
-            if(argv[i] == '3' && argv[i + 8] == '1')
-            {
-                choose_line3_1(argv[i + 1]);
-            }
-            else
-            {
-                return (0);
-            }
-        }
-        else if (argv[i + 12] == '3' && argv[i + 4] == '1')
-        {
-            if (argv[i] == '3' && argv[i + 8] == '2')
-            {
-                choose_line3_2(argv[i]);
-            }
-            else
-            {
-                return (0);
-            }
-        }
+            choose_line3_1(argv[i + 1]);
+        else if (argv[i + 12] == '3' && argv[i + 4] == '2')
+            choose_line3_2(argv[i], argv[i + 1]);
         else if (argv[i + 12] == '2' && argv[i + 8] == '3')
-        {
-            choose_line2_3(argv[i]);
-        }
+            choose_line2_3(argv[i], argv[i + 1]);
         else if (argv[i + 12] == '1' && argv[i + 8] == '2')
-        {
             choose_line1_2(argv[i + 1]);
-        }
         else if (argv[i + 12] == '1' && argv[i + 8] == '3')
         {
             choose_line1_3(argv[i + 1]);

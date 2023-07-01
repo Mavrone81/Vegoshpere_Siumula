@@ -1,25 +1,33 @@
-char *k = "1234";
-char *l = "1324";
-char *m = "1423";
-char *n = "1242";
-char *o = "1342";
-char *p = "1432";
-char *q = "2134";
-char *r = "2143";
-char *s = "2314";
-char *t = "2341";
-char *u = "2413";
-char *v = "2431";
-char *w = "3124";
-char *x = "3142";
-char *y = "3214";
-char *z = "3241";
-char *a = "3412";
-char *b = "3421";
-char *c = "4123";
-char *d = "4132";
-char *e = "4213";
-char *f = "4231";
-char *g = "4312";
-char *h = "4321";
+void    choose_line3_1(char str)
+{
+    if (str == '1')
+        draw_line3_1 ('1', '3');
+    else if (str == '3')
+        draw_line3_1 ('3', '1');
+    else
+        return (0);
+}
 
+void    choose_line3_2(char str1, char str2)
+{
+    if (str1 == '1' && str2 == '2')
+        draw_line3_2 ('1', '2', '3');
+    else if (str1 == '1' && str2 == '3')
+        draw_line3_2 ('1', '3', '2');
+    else if (str1 == '2' && str2 == '3')
+        draw_line3_2 ('2', '3', '1');
+    else
+        return (0);
+}
+
+void    choose_line2_3(char str1, char str2)
+{
+    if (str1 == '1' && str2 == '2')
+        draw_line2_3 ('1', '2', '3');
+    else if (str1 == '1' && str2 == '3')
+        draw_line2_3 ('1', '3', '2');
+    else if (str1 == '2' && str2 == '3')
+        draw_line2_3 ('2', '3', '1');
+    else
+        return (0);
+}
