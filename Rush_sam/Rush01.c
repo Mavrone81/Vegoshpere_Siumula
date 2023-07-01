@@ -33,22 +33,25 @@ int     ft_strcmp(char *s1, char *s2)
     return (s1[i] - s2[i]);
 }
 
-int rush01(argc, **argv)
+int rush01(int argc, char **argv)
+int i = 0;
+int j = 0;
+char *k = "1234";
+char *l = "1324";
+char *m = "1423";
+char *n = "1342";
+char *o = "2";
+
 {
     if (argc != 2)
     {
-        ft_putchar('\n');
+        putchar('\n');
         return (0);
     }
-    if (ft_strcmp(argv[1], "1 2 3 4 5 6 7 8 9") == 0)
+    while (argv[i] != '\0' && argv[i] <= 9)
     {
-        ft_putchar('1');
-        ft_putchar('\n');
+        f (argv[i] == '1' && argv[i + 8] == "4")
+        {
+            *k = 
+        }
     }
-    else
-    {
-        ft_putchar('0');
-        ft_putchar('\n');
-    }
-    return (0);
-}
