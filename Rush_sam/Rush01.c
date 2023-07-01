@@ -61,7 +61,6 @@ char *f = "4231";
 char *g = "4312";
 char *h = "4321";
 
-{
     if (argc != 2)
     {
         putchar('\n');
@@ -93,4 +92,24 @@ char *h = "4321";
             {
                 return (0);
             }
-        
+        else if (argv[i + 12] == '2' && argv[i + 8] == '3)
+        {
+            choose_line2_3;
+        }
+        else if (argv[i + 12] == '1' && argv[i + 8] == '2')
+        {
+            choose_line1_2;
+        }
+        else if (argv[i + 12] == '1' && argv[i + 8] == '3')
+        {
+            choose_line1_3;
+        }
+        else if (argv[i + 12] == '1' && argv[i + 8] == '4')
+        {
+            draw_line1_4;
+        }
+        else
+        {
+            draw_error;
+        }
+    }
