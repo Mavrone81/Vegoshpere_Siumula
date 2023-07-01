@@ -39,8 +39,27 @@ int j = 0;
 char *k = "1234";
 char *l = "1324";
 char *m = "1423";
-char *n = "1342";
-char *o = "2";
+char *n = "1242";
+char *o = "1342";
+char *p = "1432";
+char *q = "2134";
+char *r = "2143";
+char *s = "2314";
+char *t = "2341";
+char *u = "2413";
+char *v = "2431";
+char *w = "3124";
+char *x = "3142";
+char *y = "3214";
+char *z = "3241";
+char *a = "3412";
+char *b = "3421";
+char *c = "4123";
+char *d = "4132";
+char *e = "4213";
+char *f = "4231";
+char *g = "4312";
+char *h = "4321";
 
 {
     if (argc != 2)
@@ -50,8 +69,15 @@ char *o = "2";
     }
     while (argv[i] != '\0' && argv[i] <= 9)
     {
-        f (argv[i] == '1' && argv[i + 8] == "4")
+        if (argv[i] == '4' && argv[i + 4] != '1')
         {
-            *k = 
+            ft_putchar(' ');
+            ft_putchar(' ');
+            ft_putchar(' ');
+            ft_putchar(' ');
+            ft_putchar('\n');
         }
-    }
+        else if ()
+        {
+
+        }
