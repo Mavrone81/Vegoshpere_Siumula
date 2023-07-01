@@ -34,6 +34,7 @@ int     ft_strcmp(char *s1, char *s2)
 }
 
 int rush01(int argc, char **argv)
+{
 int i = 0;
 int j = 0;
 
@@ -42,7 +43,7 @@ int j = 0;
         putchar('\n');
         return (0);
     }
-    while(argv[i] != '\0' && argv[i] <= 9)
+    while(argv[i + 12] != '\0' && argv[i + 12] <= 9)
     {
         if(argv[i + 12] == '4' && argv[i + 4] == '1')
         {
@@ -50,7 +51,7 @@ int j = 0;
         }
         else if(argv[i + 12] == '3' && argv[i + 4] == '1')
         {
-            if(argv[i] == '3' and argv[i + 8] == '1')
+            if(argv[i] == '3' && argv[i + 8] == '1')
             {
                 choose_line3_1(argv[i + 1]);
             }
@@ -58,6 +59,7 @@ int j = 0;
             {
                 return (0);
             }
+        }
         else if (argv[i + 12] == '3' && argv[i + 4] == '1')
         {
             if (argv[i] == '3' && argv[i + 8] == '2')
@@ -68,6 +70,7 @@ int j = 0;
             {
                 return (0);
             }
+        }
         else if (argv[i + 12] == '2' && argv[i + 8] == '3')
         {
             choose_line2_3(argv[i]);
@@ -88,4 +91,5 @@ int j = 0;
         {
             draw_error();
         }
+        i++;
     }
