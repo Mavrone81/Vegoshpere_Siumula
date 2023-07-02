@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykai <ykai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 19:26:36 by ykai              #+#    #+#             */
-/*   Updated: 2023/06/27 23:45:58 by sfu              ###   ########.fr       */
+/*   Updated: 2023/07/02 21:12:13 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c)
+#include <unistd.h>
+
+int	ft_putchar(char c)
 {
-    write(1, &c, 1);
-    return (0);
+	write(1, &c, 1);
+	return (0);
 }
 
-void    putstr(char *str)
+void	ft_putstr(char *str)
 {
-    int i;
-    
-    i = 0;
-    while (str[i] != '\0')
-    {
-        ft_putchar(str[i]);
-        i++;
-    }
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
 }
