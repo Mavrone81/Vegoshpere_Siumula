@@ -26,8 +26,8 @@ int    ft_atoi(char *str)
             str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
         i++;
       if (str[i] == '-' || str[i] == '+')
-          if (str[i] == '-')
-            sign = -sign;
+        if (str[i] == '-')
+        sign = -sign;
     while (str[i] != '\0' && str[i] <= '9' && str[i] >= '0')
     {
         result = result * 10 + str[i] - '0';
@@ -35,11 +35,11 @@ int    ft_atoi(char *str)
     }
     return (result * sign);
 }
-
+/*
 int main()
 {
     char *str = "   -1234";
     int a = ft_atoi(str);
     printf("%d", a);
     return 0;
-}
+}*/
