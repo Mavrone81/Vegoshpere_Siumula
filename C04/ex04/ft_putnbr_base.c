@@ -43,37 +43,44 @@ void    ft_putnbr(int nb)
 
 void    ft_putnbr_base(int nbr, char *base)
 {
-    char    *h;
     int i;
     int reminder;
 
     i = 0;
-    *h = "0123456789ABCDEF";
-    while (nbr[i] != '\0')
+    while (nbr != 0)
     {
-        if (*base == "decimal")
+      if (*base == "decimal")
         {
-            ft_putnbr(nbr[i]);
+            ft_putnbr(nbr);
         }
         else if (*base == "binary")
         {
-            ft_putchar(nbr[i] % 2);
+            ft_putchar(nbr % 2);
         }
-        else if (*base == "hexadecimal" && (nr >= 0 || nbr[i] <= 16)
+        else if (*base == "hexadecimal")
         {
-            nbr[i] = nbr[i] / 16;
-            reminder = nbr[i] % 16;
+            nbr = nbr / 16;
+            reminder = nbr % 16;
             if (reminder <10)
             {
-                nbr[i] = reminder + '0';
+                nbr = reminder + '0';
             }
             else
             {
-                nbr[i] = reminder - 10 + 'A';
+                nbr = reminder - 10 + 'A';
             }
-            ft_putchar(nbr[i]);
+            ft_putchar(nbr);
         }
-        i++;
+        else if (*base == "octal")
+        {
+            nbr = nbr / 8;
+            reminder = nbr % 8;
+            ft_putchar(reminder);
+        }
+        else
+        {
+            ft_putchar("error");
+        }
     }
     
 }
