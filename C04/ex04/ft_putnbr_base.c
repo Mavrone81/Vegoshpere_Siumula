@@ -6,32 +6,44 @@
 /*   By: ykai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 16:24:10 by ykai              #+#    #+#             */
-/*   Updated: 2023/07/05 13:43:36 by sfu              ###   ########.fr       */
+/*   Updated: 2023/07/05 21:02:16 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	atoi_short(char *str)
+int	ft_strlen(char *str)
 {
-	int	result;
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+int	ft_validate(char *check)
+{
 	int	i;
-	int	mult;
+	int	j;	
+	int	base_l;
 
 	i = 0;
-	result = 0;
-	mult = 1;
-	if (str[0] == '-')
+	base_l = ft_strlen(check);
+	while (i < base_l -1)
 	{
-		mult = -1;
-		i++;
-	}	
-	while (str[i] != '\0' && str[i] <= '9' && str[i] >= '0')
-	{
-		result = result * 10 + str[i] - '0';
+		if (check[i] == '-' || check[i] == '+')
+			return (0);
+		j = i + 1;
+		while (j < base_l)
+		{
+			if (check[i] == check[j])
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	return (result * mult);
+	return (1);
 }
 
 void	ft_putchar(char c)
@@ -39,65 +51,36 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putnbr(int nb)
+long	ft_abs(long num)
 {
-	if (nb == -2147483648)
+	if (num < 0)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
+		return (-num);
 	}
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_putchar(nb + '0');
-	}
-}
-
-int	change_base(char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i] != '\0')
-	{
-		i++;
-	}
-	return (i + 1);
+	return (num);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	ubase;
+	int		i;
+	long	lnbr;
 
-	ubase = change_base(base);
-	if (nbr == 0)
+	lnbr = nbr;
+	i = ft_strlen(base);
+	if (ft_validate(base) == 0)
+		return ;
+	if (lnbr < 0)
 	{
-		ft_putchar('0');
+		lnbr = -lnbr;
+		ft_putchar('-');
 	}
-	if (ubase == 10)
+	if (ft_abs(lnbr) >= i)
 	{
-		ft_putnbr(nbr);
-	}
-	if (ubase == 2 || ubase == 8 || ubase == 16)
-	{
-		if (nbr < 0)
-			ft_putchar('-');
-		else
-		{
-			ft_putnbr_base(nbr / ubase, base);
-			ft_putnbr_base(nbr % ubase, base);
-		}
+		ft_putnbr_base(lnbr / i, base);
+		ft_putnbr_base(lnbr % i, base);
 	}
 	else
-		ft_putchar(nbr + '0');
+	{
+		ft_putchar(base[lnbr]);
+	}
 }
