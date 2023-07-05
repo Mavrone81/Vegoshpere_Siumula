@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 16:24:10 by ykai              #+#    #+#             */
-/*   Updated: 2023/07/02 23:21:33 by sfu              ###   ########.fr       */
+/*   Updated: 2023/07/04 22:45:49 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int    ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-    int i;
-    int sign;
-    int result;
+	int	i;
+	int	sign;
+	int	result;
 
-    i = 0;
-    sign = 1;
-    result = 0;
-    while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-            str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-            {
-                i++;
-            }
-    while (str[i] == '-' || str[i] == '+')
-        {
-            if (str[i] == '-')
-            {
-                sign = -sign;
-            }
-            i++;
-        }
-    while (str[i] != '\0' && str[i] <= '9' && str[i] >= '0')
-    {
-        result = result * 10 + str[i] - '0';
-        i++;
-    }
-    return (result * sign);
+	i = 0;
+	sign = 1;
+	result = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	{
+		i++;
+	}
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+		{
+			sign = -sign;
+		}
+		i++;
+	}
+	while (str[i] != '\0' && str[i] <= '9' && str[i] >= '0')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (result * sign);
 }
 /*
 int main()

@@ -1,86 +1,103 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 16:24:10 by ykai              #+#    #+#             */
-/*   Updated: 2023/07/02 23:21:33 by sfu              ###   ########.fr       */
+/*   Updated: 2023/07/05 13:43:36 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void    ft_putchar(char c)
+int	atoi_short(char *str)
 {
-        write(1, &c, 1);
+	int	result;
+	int	i;
+	int	mult;
+
+	i = 0;
+	result = 0;
+	mult = 1;
+	if (str[0] == '-')
+	{
+		mult = -1;
+		i++;
+	}	
+	while (str[i] != '\0' && str[i] <= '9' && str[i] >= '0')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (result * mult);
 }
 
-void    ft_putnbr(int nb)
+void	ft_putchar(char c)
 {
-        if (nb == -2147483648)
-        {
-                ft_putchar('-');
-                ft_putchar('2');
-                nb = 147483648;
-        }
-        if (nb < 0)
-        {
-                ft_putchar('-');
-                nb = -nb;
-        }
-        if (nb > 9)
-        {
-                ft_putnbr(nb / 10);
-                ft_putnbr(nb % 10);
-        }
-        else
-        {
-                ft_putchar(nb + '0');
-        }
+	write(1, &c, 1);
 }
 
-void    ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr(int nb)
 {
-    int i;
-    int reminder;
+	if (nb == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		ft_putchar(nb + '0');
+	}
+}
 
-    i = 0;
-    while (nbr != 0)
-    {
-      if (*base == "decimal")
-        {
-            ft_putnbr(nbr);
-        }
-        else if (*base == "binary")
-        {
-            ft_putchar(nbr % 2);
-        }
-        else if (*base == "hexadecimal")
-        {
-            nbr = nbr / 16;
-            reminder = nbr % 16;
-            if (reminder <10)
-            {
-                nbr = reminder + '0';
-            }
-            else
-            {
-                nbr = reminder - 10 + 'A';
-            }
-            ft_putchar(nbr);
-        }
-        else if (*base == "octal")
-        {
-            nbr = nbr / 8;
-            reminder = nbr % 8;
-            ft_putchar(reminder);
-        }
-        else
-        {
-            ft_putchar("error");
-        }
-    }
-    
+int	change_base(char *base)
+{
+	int	i;
+
+	i = 0;
+	while (base[i] != '\0')
+	{
+		i++;
+	}
+	return (i + 1);
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int	ubase;
+
+	ubase = change_base(base);
+	if (nbr == 0)
+	{
+		ft_putchar('0');
+	}
+	if (ubase == 10)
+	{
+		ft_putnbr(nbr);
+	}
+	if (ubase == 2 || ubase == 8 || ubase == 16)
+	{
+		if (nbr < 0)
+			ft_putchar('-');
+		else
+		{
+			ft_putnbr_base(nbr / ubase, base);
+			ft_putnbr_base(nbr % ubase, base);
+		}
+	}
+	else
+		ft_putchar(nbr + '0');
 }
