@@ -6,13 +6,13 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:11:36 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/13 08:34:14 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/13 21:03:01 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
 
 void*	ft_memcpy(void* des, void* src, size_t n)
 {
