@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 21:04:55 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/14 01:09:56 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/14 09:21:35 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void*	ft_memmove(void* de, const void* sr, size_t n)
 	}
 	return (de);
 }
-
+/*
 int	main()
 {
 	char source[] = "Hello World";
@@ -52,4 +52,4 @@ int	main()
 	write(STDOUT_FILENO, dest, 14);  // Output should be "Hello, World!"
 
 	return 0;
-}
+}*/

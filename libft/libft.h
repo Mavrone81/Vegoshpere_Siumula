@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 00:02:01 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/14 17:51:36 by sfu              ###   ########.fr       */
+/*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
+/*   Updated: 2023/09/14 17:56:57 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+#define LIBFT_H
 
-size_t	ft_strlen(const char *str) 
-{
-	size_t length = 0;
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdint.h>
 
-	while (str[length] != '\0') 
-	{
-		length++;
-	}
+size_t	ft_strlen(const char *str);
 
-    return length;
-}
+#endif
