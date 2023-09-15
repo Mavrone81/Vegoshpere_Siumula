@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   toupper.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 12:33:25 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/14 20:23:56 by sfu              ###   ########.fr       */
+/*   Created: 2023/09/15 00:45:28 by sfu               #+#    #+#             */
+/*   Updated: 2023/09/15 01:33:30 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char* des, const char *sr, size_t n)
+char	ft_check_upper(char c)
 {
-	if (n == 0)
-		return(ft_strlen(sr));
-	if (*sr == '\0')
-	{
-		*des = '\0';
-		return (0);
-	}
-	*des = *sr;
-	return (1 + ft_strlcpy(des + 1, sr + 1, n - 1));
+	if (c >= 'a' && c <= 122)
+		return (c - 97 + 65);
+	else
+		return (c);
 }
-/*
-int main() {
-    char source[] = "Hello, World!";
-    char dest[20];
 
-    size_t len = ft_strlcpy(dest, source, sizeof(dest));
-    write(STDOUT_FILENO, dest, len);  // Output should be "Hello, World"
-    write(1, "\n", 1);
+void	ft_toupper(char* s)
+{
+	char pc;
+
+	if (*s != '\0')
+	{
+		pc = ft_check_upper(*s);
+		write (STDOUT_FILENO, &pc, 1);
+		ft_toupper(s + 1);
+	}
+}
+
+int main() 
+{
+    char input[] = "Hello, World!";
+    
+    // Convert the string to uppercase and print it
+    ft_toupper(input);
+    write (STDOUT_FILENO, "\n", 1);
 
     return 0;
-}*/
+}
