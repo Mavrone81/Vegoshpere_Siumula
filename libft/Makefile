@@ -6,7 +6,7 @@
 #    By: sfu <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/17 00:54:28 by sfu               #+#    #+#              #
-#    Updated: 2023/09/17 01:49:49 by sfu              ###   ########.fr        #
+#    Updated: 2023/09/17 01:55:48 by sfu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,23 +31,23 @@ all: $(BINARY)
 $(BINARY): $(ARCHIEVE)
 
 %.o:%.c
-	$(COMPILER) $(CFLAGS) -I $(INCLUDE) -o $@ $^
+	@$(COMPILER) $(CFLAGS) -I $(INCLUDE) -o $@ $^
 
 $(ARCHIEVE): $(OBJ)
-	$(STATICLIB) $(ARCHIEVE) $(OBJ)
-	$(RANLIN) $(ARCHIEVE)
+	@$(STATICLIB) $(ARCHIEVE) $(OBJ)
+	@$(RANLIN) $(ARCHIEVE)
 
 
 bonus: $(OBJ) $(B_OBJ)
-	$(COMPILER) $(CFLAGS) -I $(INCLUDE) -o $(B_OBJ) $(OBJ)
-	$(STATICLIB) $(ARCHIEVE) $(B_OBJ) $(OBJ)
-	$(RANLIB) $(ARCHIEVE)
+	@$(COMPILER) $(CFLAGS) -I $(INCLUDE) -o $(B_OBJ) $(OBJ)
+	@$(STATICLIB) $(ARCHIEVE) $(B_OBJ) $(OBJ)
+	@$(RANLIB) $(ARCHIEVE)
 
 clean: 
-	$(DELETE) $(BINARY) $(OBJ) $(B_OBJ)
+	@$(DELETE) $(BINARY) $(OBJ) $(B_OBJ)
 
 lclean:
-	$(DELETE) $(ARCHIEVE)
+	@$(DELETE) $(ARCHIEVE)
 
 redo: lclean all
 
