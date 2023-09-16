@@ -6,17 +6,16 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:11:36 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/13 21:03:01 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/17 01:45:00 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
+#include "libft.h"
+
 
 void*	ft_memcpy(void* des, void* src, size_t n)
 {
-	int	i;
+	size_t	i;
 	char*	c_des;
 	char*	c_src;
 
@@ -32,14 +31,14 @@ void*	ft_memcpy(void* des, void* src, size_t n)
 	}
 	return(des);
 }
-
+/*
 typedef struct
 {
 	char	name[256];
 	int	age;
 	double	score;
 } student;
-/*
+
 int	main()
 {
 	//char 	src[] = "copy this";

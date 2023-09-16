@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:40:37 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/15 19:14:16 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/17 01:46:21 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ char*	ft_strchr(const char *s, int c)
 	if (*s == c)
 		return ((char*)s);
 	ft_strchr(s + 1, c);
+	return (0);
 }
+/*
 int	main()
 {
 	char	stringtest[] = "Hello World";
@@ -37,6 +39,4 @@ int	main()
 		char	notfound[] = { "this is not found\n" };
 		write (STDOUT_FILENO, notfound, sizeof(notfound));
 	}
-}
-
-
+}*/
