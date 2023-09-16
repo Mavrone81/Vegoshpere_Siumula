@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/15 19:16:51 by sfu              ###   ########.fr       */
+/*   Created: 2023/09/15 16:55:06 by sfu               #+#    #+#             */
+/*   Updated: 2023/09/15 17:40:15 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-#define LIBFT_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdint.h>
+char	change_lower(char c)
+{
+	if(c >= 65 && c <= 90)
+	{
+		return(c - 65 + 97);
+	}
+	return (c);
+}
 
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcat(char* des, const char* sr, size_t size);
-void    ft_toupper(char* s);
-void    ft_tolower(char* s);
-char*   strchr(const char *s, int c);
-char*   strrchr(const char *s, int c);
+void	ft_tolower(char* s)
+{
+	char	lc;
+	
+	if(*s == '\0')
+		return;
+	lc = change_lower(*s);
+	write (STDOUT_FILENO, &lc, 1);
+	ft_tolower(s + 1);
+}
 
-
-
-#endif
+int	main()
+{
+	char uppercaseChar[] = "HELLO WORLD!!";
+	ft_tolower(uppercaseChar);
+	write(STDOUT_FILENO, "\n", 1);
+}
