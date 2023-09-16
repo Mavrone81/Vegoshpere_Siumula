@@ -6,7 +6,7 @@
 #    By: sfu <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/17 00:54:28 by sfu               #+#    #+#              #
-#    Updated: 2023/09/17 01:49:00 by sfu              ###   ########.fr        #
+#    Updated: 2023/09/17 01:49:49 by sfu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,6 @@ redo: lclean all
 
 check:
 	@git status
-	@git diff --stats
+	@git diff --stat
 
 .PHONY: all clean lclean re bonus
