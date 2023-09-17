@@ -6,7 +6,7 @@
 #    By: sfu <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/17 00:54:28 by sfu               #+#    #+#              #
-#    Updated: 2023/09/17 16:04:34 by sfu              ###   ########.fr        #
+#    Updated: 2023/09/17 19:39:53 by sfu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@ CFILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_str
 B_CFILES = 
 INCLUDE = ./ ./include/
 COMPILER = gcc -c
-CFLAGS = -Wall -Wextra -Werror $(INCDIR)
+CFLAGS = -Wall -Wextra -Werror 
 OPT = -03
 INCDIRS = -I
 DELETE = rm -f
 DELETEFOLD = -r
 STATICLIB = ar rcs
 RANLIB = ranlib
-OFIELS = $(CFILES:%.c=%.o)
+OFILES = $(CFILES:%.c=%.o)
 B_OFILES = $(B_CFILES:%.c=%.o)
 DEFLAGS = -MP -MD
 BINARY = bin
@@ -32,7 +32,7 @@ all: $(ARCHIEVE)
 	echo "Loading Executable"
 
 %.o: %.c
-	@$(COMPILER) $(CFLAGS)-o $@ $^ -c
+	@$(COMPILER) $(CFLAGS) -c -o $@ $^
 
 $(ARCHIEVE): $(OFILES)
 	@$(STATICLIB) $(ARCHIEVE) $(OFILES)
@@ -51,7 +51,7 @@ lclean:
 	@$(DELETE) $(ARCHIEVE)
 
 $(TEST): all
-	@$(COMPILER) $(CFLAGS) $(MAIN) -l $(ARCHIEVE)
+	@$(COMPILER) -L $(MAIN) -lft -o test
 
 redo: lclean all
 
