@@ -1,1 +1,6 @@
-.swp
+
+*.0
+*.a
+*.swp
+*.out
+paco

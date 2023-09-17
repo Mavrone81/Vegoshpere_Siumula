@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/17 01:29:56 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/17 21:24:16 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void    ft_toupper(char* s);
 void    ft_tolower(char* s);
 char*   strchr(const char *s, int c);
 char*   strrchr(const char *s, int c);
+int     ft_atoi(const char *str);
 
 #endif

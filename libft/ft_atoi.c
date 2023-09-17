@@ -1,47 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/17 15:15:26 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/17 21:21:37 by sfu              ###   ########.fr       */
+/*   Created: 2023/09/17 20:55:03 by sfu               #+#    #+#             */
+/*   Updated: 2023/09/17 22:29:18 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main()
+int	ft_atoi(const char *str)
 {
-	char buffer[10];
-	char *result;
+	int	results;
+	int	sign;
+	int	i;
 
-	result = ft_memset(buffer, 'A', sizeof(buffer));
-	write(STDOUT_FILENO, "MEMSET\n", 7);
-	write(STDOUT_FILENO, result, sizeof(buffer));
-	write(STDOUT_FILENO, "\n", 1);
+	results = 0;
+	sign = 1;
+	i = 0;
 
-	//return 0;
-	
-	//int main()
-   	 char ch = '5';
-
-	write(STDOUT_FILENO, "\nISDIGIT\n", 9);
-    	if (ft_isdigit(ch)) 
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 	{
-        	write(STDOUT_FILENO, "Character is a digit.\n", 23);
-	} 
-	else
-	{
-        	write(STDOUT_FILENO, "Character is not a digit.\n", 27);
+		i++;
 	}
-	return(0);
-
-    const char *str = "12345";
-    int num = custom_atoi(str);
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+	{
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		results = (results * 10) + (str[i] - '0');
+		i++;
+	}
+	return (results * sign);
+}
+/*
+int main() 
+{
+    const char *str = "123";
+    int num = ft_atoi(str);
     write(STDOUT_FILENO, "Parsed number: ", 15);
     write(STDOUT_FILENO, &num, sizeof(int));
     write(STDOUT_FILENO, "\n", 1);
     return 0;
-}
+}*/

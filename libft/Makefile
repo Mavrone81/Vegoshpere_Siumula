@@ -1,62 +1,79 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sfu <marvin@42.fr>                         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/17 00:54:28 by sfu               #+#    #+#              #
-#    Updated: 2023/09/17 19:39:53 by sfu              ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME					= libft.a
 
-ARCHIEVE = libft.a
-CFILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c
-B_CFILES = 
-INCLUDE = ./ ./include/
-COMPILER = gcc -c
-CFLAGS = -Wall -Wextra -Werror 
-OPT = -03
-INCDIRS = -I
-DELETE = rm -f
-DELETEFOLD = -r
-STATICLIB = ar rcs
-RANLIB = ranlib
-OFILES = $(CFILES:%.c=%.o)
-B_OFILES = $(B_CFILES:%.c=%.o)
-DEFLAGS = -MP -MD
-BINARY = bin
-MAIN = test.c
+SRCS					= ft_atoi.c \
+					  ft_bzero.c \
+					  ft_calloc.c \
+					  ft_isalnum.c \
+					  ft_isalpha.c \
+					  ft_isascii.c \
+					  ft_isdigit.c \
+					  ft_isprint.c \
+					  ft_itoa.c \
+					  ft_memchr.c \
+					  ft_memcmp.c \
+					  ft_memcpy.c \
+					  ft_memmove.c \
+					  ft_memset.c \
+					  ft_putchar_fd.c \
+					  ft_putendl_fd.c \
+					  ft_putnbr_fd.c \
+					  ft_putstr_fd.c \
+					  ft_split.c \
+					  ft_strchr.c \
+					  ft_strdup.c \
+					  ft_strjoin.c \
+					  ft_strlcat.c \
+					  ft_strlcpy.c \
+					  ft_strlen.c \
+					  ft_strmapi.c \
+					  ft_strncmp.c \
+					  ft_strnstr.c \
+					  ft_strrchr.c \
+					  ft_strtrim.c \
+					  ft_substr.c \
+					  ft_tolower.c \
+					  ft_toupper.c \
+                                          ft_striteri.c
 
-all: $(ARCHIEVE)
-	echo "Loading Executable"
+BNS_SRCS				= ft_lstsize_bonus.c \
+					  ft_lstadd_back_bonus.c \
+					  ft_lstadd_front_bonus.c \
+					  ft_lstclear_bonus.c \
+					  ft_lstdelone_bonus.c \
+					  ft_lstiter_bonus.c \
+					  ft_lstlast_bonus.c \
+					  ft_lstmap_bonus.c \
+					  ft_lstnew_bonus.c
 
-%.o: %.c
-	@$(COMPILER) $(CFLAGS) -c -o $@ $^
+OBJS					= $(SRCS:%.c=%.o)
 
-$(ARCHIEVE): $(OFILES)
-	@$(STATICLIB) $(ARCHIEVE) $(OFILES)
-	@$(RANLIB) $(ARCHIEVE)
+BNS_OBJS				= $(BNS_SRCS:%.c=%.o)
+
+FLAGS					= -Wall -Wextra -Werror
+
+$(NAME)	:	$(OBJS)
+		@gcc $(FLAGS) -c $(SRCS) -I./
+		@ar rc $(NAME) $(OBJS)
+
+all	:	$(NAME)
+
+bonus	:	$(NAME)
+		@gcc $(FLAGS) -c $(BNS_SRCS) -I./
+		@ar rc $(NAME) $(BNS_OBJS)
+
+test	:	all
+		@echo "test File"
+		@gcc -L. test.c -lft -o test
+		@chmod +x test
+		@./test
 
 
-bonus: $(OFILES) $(B_OFILES)
-	@$(COMPILER) $(CFLAGS) -o $(B_FILES) $(OFILES)
-	@$(STATICLIB) $(ARCHIEVE) $(B_OFILES) $(OFILES)
-	@$(RANLIB) $(ARCHIEVE)
+clean	:
+		@rm -f $(OBJS) $(BNS_OBJS)
 
-clean: 
-	@$(DELETE) $(BINARY) $(OFILES) $(B_OFILES) $(ARCHIEVE)
+fclean	:	clean
+		@rm -f $(NAME)
 
-lclean:
-	@$(DELETE) $(ARCHIEVE)
+re	:	fclean all
 
-$(TEST): all
-	@$(COMPILER) -L $(MAIN) -lft -o test
-
-redo: lclean all
-
-check:
-	@git status
-	@git diff --stat
-
-.PHONY: all clean lclean redo bonus
+.PHONY	:	all clean fclean re
