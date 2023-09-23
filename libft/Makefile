@@ -69,7 +69,7 @@ test	:	all
 
 
 clean	:
-		@rm -f $(OBJS) $(BNS_OBJS) *.gch
+		@rm -f $(OBJS) $(BNS_OBJS) *.gch *.out
 
 fclean	:	clean
 		@rm -f $(NAME)
