@@ -1,7 +1,6 @@
 #include "libft.h"
-#include <stdio.h>
 
-void    *ft_calloc(size_t num_elements, size_t element_size)
+	void    *ft_calloc(size_t num_elements, size_t element_size)
 {
     size_t  total_size = num_elements * element_size;
     void    *ptr;

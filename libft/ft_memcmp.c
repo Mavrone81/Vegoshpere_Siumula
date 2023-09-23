@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:39:45 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/23 14:13:28 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/23 14:17:12 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_memcmp(const char *s1, const char *s2, size_t n)
 		s2++;
 	}
 	return(0);
-}
+}/*
 int main() {
     const char *str1 = "Hello, World!";
     const char *str2 = "Hello, Universe!";
@@ -39,4 +39,4 @@ int main() {
     }
 
     return 0;
-}
+}*/
