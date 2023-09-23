@@ -6,8 +6,13 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:19:58 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/23 14:26:38 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/23 14:28:31 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strnstr(const char *heystack, const char *needle, size_t n)
+{
+
+}
