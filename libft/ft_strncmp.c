@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 20:53:40 by sfu               #+#    #+#             */
+/*   Updated: 2023/09/23 20:56:34 by sfu              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-int ft_strncmp(const char* str1, const char* str2, size_t n) 
+int	ft_strncmp(const char* str1, const char* str2, size_t n) 
 {
-    while (n > 0 || *str1 != '\0' || *str2 != '\0')
-    {
-        if (*str1 != *str2)
-            return (*str1 - *str2);
-        str1++;
-        str2++;
-        n--;
-    }
-    return (0);
+	while (n > 0 || *str1 != '\0' || *str2 != '\0')
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
+		n--;
+	}
+	return (0);
 }
 /*
 int main() {
