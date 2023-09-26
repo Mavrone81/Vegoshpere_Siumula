@@ -6,17 +6,19 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/24 00:28:10 by sfu              ###   ########.fr       */
+/*   Updated: 2023/09/26 02:49:03 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 #define LIBFT_H
 
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdint.h>
 
+//part I
 int	ft_isalpha(char x);
 int	ft_isdigit(int c);
 int	ft_isalnum(int c);
@@ -39,11 +41,18 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int	ft_memcmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *heystack, const char *needle, size_t n);
 int	ft_atoi(const char *str);
-
+//additional
 void	*ft_calloc(size_t num_elements, size_t element_size);
 char	*ft_strdup(const char *s);
 
+//part II
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(const char *s1, const char *set);
+char	*ft_strtrim(const char *s1, const char *set);
+char    **ft_split(const char *s, char c);
 
+// OThers
+int	ft_check_special(unsigned int ch);
 
 #endif
