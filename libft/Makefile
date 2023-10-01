@@ -69,10 +69,10 @@ test	:	all
 
 
 clean	:
-		@rm -f $(OBJS) $(BNS_OBJS) *.gch *.out
+		@rm -f $(OBJS) $(BNS_OBJS) *.gch *.out 
 
 fclean	:	clean
-		@rm -f $(NAME)
+		@rm -f $(NAME) .*.swp .*.swo
 
 re	:	fclean all
 
