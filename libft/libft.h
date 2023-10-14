@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/26 21:08:10 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/04 23:43:06 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_strtrim(const char *s1, const char *set);
 char    **ft_split(const char *s, char c);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
 
 // OThers
 int	ft_check_special(unsigned int ch);
