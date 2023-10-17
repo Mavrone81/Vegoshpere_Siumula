@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/04 23:43:06 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/16 22:13:35 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,16 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 
+<<<<<<< HEAD
 //bonus
 
+=======
+typedef	struct	s_list
+{
+	void			*content;
+	struct	s_list	*next;
+}					t_list;
+>>>>>>> ca6ca5b (updated changes from up to part2)
 
 // OThers
 //int	ft_check_special(unsigned int ch);
