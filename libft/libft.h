@@ -18,6 +18,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+
+
+
 //part I
 int	ft_isalpha(char x);
 int	ft_isdigit(int c);
@@ -55,7 +58,10 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 
+//bonus
+
+
 // OThers
-int	ft_check_special(unsigned int ch);
+//int	ft_check_special(unsigned int ch);
 
 #endif
