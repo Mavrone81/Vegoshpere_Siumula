@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/16 22:13:35 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/18 00:21:20 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdint.h>
-
-
-
 
 //part I
 int	ft_isalpha(char x);
@@ -58,16 +55,19 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 
-<<<<<<< HEAD
 //bonus
 
-=======
 typedef	struct	s_list
 {
 	void			*content;
 	struct	s_list	*next;
 }					t_list;
->>>>>>> ca6ca5b (updated changes from up to part2)
+
+typedef	struct	s_node
+{
+	t_list	*head;
+	t_list	*current;
+}
 
 // OThers
 //int	ft_check_special(unsigned int ch);
