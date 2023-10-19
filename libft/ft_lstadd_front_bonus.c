@@ -5,21 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 22:21:59 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/16 22:48:13 by sfu              ###   ########.fr       */
+/*   Created: 2023/10/20 00:56:31 by sfu               #+#    #+#             */
+/*   Updated: 2023/10/20 01:00:40 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#incldue "libft.h"
+#include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_lst *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	struct t_list	*ptr;
-
-	*ptr = malloc(sizeof(t_lst));
-	ptr->content = new
-	ptr->next = NULL;
-
-	ptr->next = *lst;
-	*lst = ptr;
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

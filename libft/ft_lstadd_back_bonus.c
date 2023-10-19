@@ -5,24 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 00:49:20 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/18 01:01:07 by sfu              ###   ########.fr       */
+/*   Created: 2023/10/20 00:46:57 by sfu               #+#    #+#             */
+/*   Updated: 2023/10/20 00:56:16 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 void	ft_lstadd_back(t_list **lst, t_list *new);
 {
-	new->next = NULL;
-	if (*lst == NULL)
-	{
+	if (!lst || !new)
+		return ;
+	if (!*lst)
 		*lst = new;
-		return;
-	}
-	while ((*lst)->next != null)
+	else
 	{
-		*lst = (*lst)->next;
+		while (*lst->next != NULL)
+		{
+			*lst = (*lst)->next;
+		}
+		(*lst)->next = new;
+		new->next = NULL;
 	}
-	(*lst)->next = new;
 }
