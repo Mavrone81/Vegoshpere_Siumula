@@ -6,14 +6,14 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:11:36 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/17 01:45:00 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:17:42 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 
-void*	ft_memcpy(void* des, void* src, size_t n)
+void	*ft_memcpy(void *des, void *src, size_t n)
 {
 	size_t	i;
 	char*	c_des;

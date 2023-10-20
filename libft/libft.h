@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:43:13 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/21 01:11:02 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:18:50 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *heystack, const char *needle, size_t n);
 int		ft_atoi(const char *str);
+
 //additional
 void	*ft_calloc(size_t num_elements, size_t element_size);
 char	*ft_strdup(const char *s);
