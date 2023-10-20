@@ -6,10 +6,12 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 02:45:02 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/30 17:59:57 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 00:39:43 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// Original run before shortern
+/*
 #include "libft.h"
 
 char	**ft_split(const char *s, char c)
@@ -63,9 +65,69 @@ char	**ft_split(const char *s, char c)
 		j++;
 	}
 	return (string);
+}*/
+
+#include "libft.h"
+
+static size_t	ft_wordlen(char const *s, char c)
+{
+	size_t	count;
+
+	count = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			++count;
+			while (*s && *s != c)
+				++s;
+		}
+		else
+			++s;
+	}
+	return (count);
 }
 
-// Function to print the result of ft_split
+static char	**ft_free_dptr(char **s, int i)
+{
+	while (--i >= 0 && s[i])
+	{
+		free(s[i]);
+		s[i] = NULL;
+	}
+	free(s);
+	s = NULL;
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	char	*from;
+	char	**buffer;
+
+	i = 0;
+	buffer = (char **)malloc((ft_wordlen(s, c) + 1) * sizeof(char *));
+	if (!s || !buffer)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			from = (char *)s;
+			while (*s && *s != c)
+				++s;
+			buffer[i++] = ft_substr(from, 0, (s - from));
+			if (!buffer)
+				return (ft_free_dptr(buffer, i));
+		}
+		else
+			++s;
+	}
+	buffer[i] = NULL;
+	return (buffer);
+}
+/*// Function to print the result of ft_split
 void printResult(char **result) {
     if (!result) {
         printf("Error: Memory allocation failed\n");
@@ -78,7 +140,6 @@ void printResult(char **result) {
     }
     free(result);
 }
-/*
 int main() {
     // Test Case 1: Basic Test
     const char *input1 = "This,is,a,test";

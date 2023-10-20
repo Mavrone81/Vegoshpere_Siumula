@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:53:45 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/24 18:45:40 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 00:34:09 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	char	*result;
 	
 
-	if (!*s1)
+	if (!s1 || !s2)
 		return (NULL);
-	len1 = ft_strlen(s1) + 1;
+	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	result = ft_calloc(len1 + len2 + 1, sizeof(char *));
-	ft_strlcat(result, (char *)s1, len1 + 1);
-	ft_strlcat(result, (char *)s2, len2);
+	result = (char *)ft_calloc(len1 + len2 + 1, sizeof(char));
+	if (!result)
+		return (NULL);
+	ft_strlcpy(result, s1, len1 + 1);
+	ft_strlcpy(result + len1, s2, len2 + 1);
 	return (result);
 }
 /*

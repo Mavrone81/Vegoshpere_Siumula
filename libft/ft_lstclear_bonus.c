@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 00:47:48 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/19 00:49:52 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/20 01:52:52 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	{
 		tmp = (*lst)->next;
 		ft_lstdelone(*lst, del);
-		*lst = tmp
+		*lst = tmp;
 	}
 }

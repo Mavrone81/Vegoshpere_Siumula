@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:19:58 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/24 15:45:12 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 00:20:01 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 		return ((char *)haystack);
 	while (*haystack && n-- >= len)
 	{
-		if (*haystack == *needle)
+		if (*haystack == *needle && !ft_memcmp(haystack, needle, len))
 			return ((char *)haystack);
 		++haystack;
 	}
-	return(NULL);
-}/*
-int main() {
+	return (NULL);
+}
+/*int main() {
     const char *haystack = "Hello, World!";
     const char *needle = "el";
     size_t len = 13; // Search within the first 13 characters

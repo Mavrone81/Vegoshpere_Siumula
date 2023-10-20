@@ -6,23 +6,23 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 20:53:40 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/23 21:08:52 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/20 23:54:49 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strncmp(const char* str1, const char* str2, size_t n) 
+int	ft_strncmp(const char *str1, const char *str2, size_t n) 
 {
-	while (n > 0 || *str1 != '\0' || *str2 != '\0')
+	while (*str1 && *str2 && n && (*str1 == *str2))
 	{
-		if (*str1 != *str2)
-			return (*str1 - *str2);
-		str1++;
-		str2++;
-		n--;
+		++str1;
+		++str2;
+		--n;
 	}
-	return (0);
+	if (n == 0)
+		return (0);
+	return (*(unsigned char *)str1 - *(unsigned char *)str2);
 }
 /*
 int main() {

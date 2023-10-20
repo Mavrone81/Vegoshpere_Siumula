@@ -6,16 +6,18 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:24:41 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/17 01:21:13 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 01:09:54 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_isalpha(char x)
+int	ft_isalpha(int x)
 {
-	if((x>= 65 && x<=90) || (x>= 97 && x<= 122))
+	if (x >= 65 && x <= 90)
 		return(1);
+	else if (x >= 'a' && x <= 'z')
+		return (2);
 	return(0);
 }
 /*

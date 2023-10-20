@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:27:22 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/18 00:48:57 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 00:44:03 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst->next != NULL)
+	while (lst != NULL && lst->next != NULL)
 	{
 		lst = lst->next;
 	}
 	return (lst);
 }
-/*
-t_list* createNode(t_list *data) {
+/*t_list* createNode(t_list *data) {
     t_list* newNode = malloc(sizeof(t_list));
     if (newNode == NULL) {
         fprintf(stderr, "Memory allocation error\n");
@@ -59,4 +58,4 @@ int main() {
     free(multiNodeList);
 
     return 0;
-}*
+}*/

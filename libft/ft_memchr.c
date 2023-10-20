@@ -1,22 +1,16 @@
 #include "libft.h"
 
-void    *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int a, size_t b)
 {
-    const unsigned char *src;
+	size_t	i;
 
-    src = s;
-    while (n > 0)
-    {
-        if (*src == (unsigned char)c)
-        {
-            return ((void *)src);
-        }
-        src++;
-        n++;
-    }
-    return(NULL);
-}/*
-int main() {
+	i = -1;
+	while (++i < b)
+		if (((unsigned char *)s)[i] == (unsigned char)a)
+			return ((void *)s + i);
+	return (NULL);
+}
+/*int main() {
     const char* str = "Hello, World!";
     int character = 'o';
     size_t n = 13; // Search the first 13 characters

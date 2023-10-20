@@ -6,39 +6,38 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 00:00:53 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/27 02:47:52 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 00:24:03 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-//#include <stdio.h>
-
-int	ft_check_special(unsigned int ch)
+/*static int	ft_check_special(unsigned int ch)
 {
 	if ((ch >= 33 && ch <= 47) || (ch >= 58 && ch <= 64))
 		return (0);
 	if ((ch >= 91 && ch <= 96) || (ch >= 123 && ch <= 126))
 		return (0);
 	return (1);
-}
+}*/
+// change on use of check to str duplicate
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+#include "libft.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*buffer;
+	size_t	s_len;
 
-	if (start >= ft_strlen(s))
+	if (!s)
 		return (NULL);
-	str = malloc(len + 1);
-	if (s == NULL)
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
+	buffer = (char *)malloc(len + 1);
+	if (!buffer)
 		return (NULL);
-	if (len == 0)
-		return (NULL);
-	if (ft_check_special(start) == 0)
-		return (NULL);
-	ft_strlcpy(str, s + start, len);
-	str[len] = '\0';
-	return (str);
-
+	ft_strlcpy(buffer, s + start, len + 1);
+	return (buffer);
 }
 /*
 void test_substr() {

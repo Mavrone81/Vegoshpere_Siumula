@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 00:45:28 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/15 01:33:30 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/20 23:48:49 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_check_upper(char c)
+int	ft_toupper(int n)
 {
-	if (c >= 'a' && c <= 122)
-		return (c - 97 + 65);
-	else
-		return (c);
+	if (ft_isalpha(n) == 2)
+		return (n - 32);
+	return (n);
 }
 
-void	ft_toupper(char* s)
-{
-	char pc;
-
-	if (*s != '\0')
-	{
-		pc = ft_check_upper(*s);
-		write (STDOUT_FILENO, &pc, 1);
-		ft_toupper(s + 1);
-	}
-}
-
-int main() 
+/*int main() 
 {
     char input[] = "Hello, World!";
     
@@ -41,4 +28,4 @@ int main()
     write (STDOUT_FILENO, "\n", 1);
 
     return 0;
-}
+}*/
