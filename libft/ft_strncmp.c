@@ -6,13 +6,13 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 20:53:40 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/20 23:54:49 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:55:45 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n) 
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	while (*str1 && *str2 && n && (*str1 == *str2))
 	{

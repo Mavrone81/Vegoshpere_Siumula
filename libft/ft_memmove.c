@@ -6,39 +6,33 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 21:04:55 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/14 09:21:35 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:26:22 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void*	ft_memmove(void* de, const void* sr, size_t n)
+void	*ft_memmove(void *de, const void *sr, size_t n)
 {
-	char*		d;
-	const char*	s;
+	char		*d;
+	const char	*s;
 
-	d = (char*) de;
-	s = (const char*) sr;
-	if(d > s)
+	d = (char *) de;
+	s = (const char *) sr;
+	if (d > s)
 	{
 		d += n;
 		s += n;
 		while (n--)
-		{
 			*(--d) = *(--s);
-		}
 	}
 	else if (d < s)
 	{
 		while (n--)
-		{
 			*d++ = *s++;
-		}
 	}
 	else if (s == NULL)
-	{
 		return (NULL);
-	}
 	return (de);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:39:45 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/20 23:58:06 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:35:05 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t a)
     if (result == 0) {
         write(STDOUT_FILENO, "Memory is equal up to 20 bytes.\n", 33);
     } else if (result < 0) {
-        write(STDOUT_FILENO, "Memory in str1 is less than str2 up to 20 bytes.\n", 50);
+        write(STDOUT_FILENO, "Memory in str1 is less than str2 
+		up to 20 bytes.\n", 50);
     } else {
-        write(STDOUT_FILENO, "Memory in str1 is greater than str2 up to 20 bytes.\n", 53);
+        write(STDOUT_FILENO, "Memory in str1 is greater 
+		than str2 up to 20 bytes.\n", 53);
     }
 
     return 0;

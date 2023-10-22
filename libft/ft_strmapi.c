@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:08:40 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/01 22:44:35 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/22 00:36:19 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (0);
 	len = ft_strlen(s);
-	if (!(str = (char *)malloc(len + 1)))
-		return(NULL);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
 	while (i < len)
 	{
 		str[i] = f(i, s[i]);

@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:53:45 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/21 00:34:09 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:56:39 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	len1;
 	size_t	len2;
 	char	*result;
-	
 
 	if (!s1 || !s2)
 		return (NULL);

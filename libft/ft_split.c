@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 02:45:02 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/21 00:39:43 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/22 01:04:28 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ static char	**ft_free_dptr(char **s, int i)
 		s[i] = NULL;
 	}
 	free(s);
-	s = NULL;
 	return (NULL);
 }
 
@@ -108,7 +107,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	buffer = (char **)malloc((ft_wordlen(s, c) + 1) * sizeof(char *));
-	if (!s || !buffer)
+	if (!buffer || !s)
 		return (NULL);
 	while (*s)
 	{
@@ -117,9 +116,10 @@ char	**ft_split(char const *s, char c)
 			from = (char *)s;
 			while (*s && *s != c)
 				++s;
-			buffer[i++] = ft_substr(from, 0, (s - from));
-			if (!buffer)
+			buffer[i] = ft_substr(from, 0, (s - from));
+			if (!buffer[i])
 				return (ft_free_dptr(buffer, i));
+			i++;
 		}
 		else
 			++s;

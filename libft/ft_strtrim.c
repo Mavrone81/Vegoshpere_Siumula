@@ -6,13 +6,13 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:22:18 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/26 02:44:42 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:58:38 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int in(const char *str, char check)
+static int	init(const char *str, char check)
 {
 	while (*str && check != *str)
 		str++;
@@ -28,11 +28,11 @@ char	*ft_strtrim(const char *s1, const char *set)
 	last = ft_strlen(s1);
 	if (!set && !s1)
 		return (NULL);
-	while (in(set, s1[first]))
+	while (init(set, s1[first]))
 		first++;
 	if (first == last)
 		return (ft_strdup(""));
-	while (in(set, s1[last - 1]))
+	while (init(set, s1[last - 1]))
 		last--;
 	return (ft_substr(s1, first, last - first));
 }

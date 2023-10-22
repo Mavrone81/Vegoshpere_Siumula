@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:14:26 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/26 21:08:51 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/22 00:27:52 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ char	*ft_strrchr(const char *s, int c)
 	char	*last;
 
 	last = NULL;
-	while (*s++)
+	while (*s != '\0')
 	{
 		if (*s == (char)c)
 			last = (char *)s;
+		s++;
 	}
+	if (c == '\0' || *s == (char)c)
+		return ((char *)s);
 	return (last); 
 }
 /*

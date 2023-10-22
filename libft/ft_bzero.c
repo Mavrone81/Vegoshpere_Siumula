@@ -6,13 +6,13 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 02:22:11 by sfu               #+#    #+#             */
-/*   Updated: 2023/09/17 01:42:04 by sfu              ###   ########.fr       */
+/*   Updated: 2023/10/21 03:21:50 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void* s, size_t len)
+void	ft_bzero(void *s, size_t len)
 {
 	ft_memset(s, 0, len);
 }
