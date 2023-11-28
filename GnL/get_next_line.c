@@ -98,11 +98,6 @@ void	create_list(t_list **list, int fd)
 	}
 }
 
-/*
- * Mother function
- * 	~Took a fildes
- * 	~Gives back the next_string 
-*/
 char	*get_next_line(int fd)
 {
 	static t_list	*list = NULL;
