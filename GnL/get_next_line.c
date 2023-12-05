@@ -38,9 +38,7 @@ void	polish_list(t_list **list)
 	dealloc(list, clean_node, buf);
 }
 
-/*
- * Get my (line\n] 
-*/
+/* Get my (line\n] */
 char	*get_line(t_list *list)
 {
 	int		str_len;
@@ -56,10 +54,7 @@ char	*get_line(t_list *list)
 	return (next_str);
 }
 
-/*
- * append one node
- * to the end of list
-*/
+/* append one node to the end of list */
 void	append(t_list **list, char *buf)
 {
 	t_list	*new_node;
