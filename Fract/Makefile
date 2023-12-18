@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jechoo <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/08 10:47:50 by jechoo            #+#    #+#              #
-#    Updated: 2023/09/08 14:57:57 by jechoo           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = fractol
 SOURCES = \
 	burningship.c burningship_utils.c ft_strcmp.c main.c mandelbrot.c mandelbrot_utils.c
