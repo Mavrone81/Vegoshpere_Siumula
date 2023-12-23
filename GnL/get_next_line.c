@@ -6,104 +6,89 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:48:40 by sfu               #+#    #+#             */
-/*   Updated: 2023/11/13 17:48:42 by sfu              ###   ########.fr       */
+/*   Updated: 2023/12/23 16:57:23 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-//#include <stdlib.h>
 
-void	polish_list(t_list **list)
+char	*find_new_line(char **temp_box)
 {
-	t_list	*last_node;
-	t_list	*clean_node;
-	int		i;
-	int		k;
-	char	*buf;
+	char	*withline;
+	char	*leftovers;
+	int		len;
 
-	buf = malloc(BUFFER_SIZE + 1);
-	clean_node = malloc(sizeof(t_list));
-	if (NULL == buf || NULL == clean_node)
-		return ;
-	last_node = find_last_node(*list);
-	i = 0;
-	k = 0;
-	while (last_node->str_buf[i] && last_node->str_buf[i] != '\n')
-		++i;
-	while (last_node->str_buf[i] && last_node->str_buf[++i])
-		buf[k++] = last_node->str_buf[i];
-	buf[k] = '\0';
-	clean_node->str_buf = buf;
-	clean_node->next = NULL;
-	dealloc(list, clean_node, buf);
-}
-
-/* Get my (line\n] */
-char	*get_line(t_list *list)
-{
-	int		str_len;
-	char	*next_str;
-
-	if (NULL == list)
-		return (NULL);
-	str_len = len_to_newline(list);
-	next_str = malloc(str_len + 1);
-	if (NULL == next_str)
-		return (NULL);
-	copy_str(list, next_str);
-	return (next_str);
-}
-
-/* append one node to the end of list */
-void	append(t_list **list, char *buf)
-{
-	t_list	*new_node;
-	t_list	*last_node;
-
-	last_node = find_last_node(*list);
-	new_node = malloc(sizeof(t_list));
-	if (NULL == new_node)
-		return ;
-	if (NULL == last_node)
-		*list = new_node;
-	else
-		last_node->next = new_node;
-	new_node->str_buf = buf;
-	new_node->next = NULL;
-}
-
-void	create_list(t_list **list, int fd)
-{
-	int		char_read;	
-	char	*buf;
-
-	while (!found_newline(*list))
+	len = 0;
+	while ((*temp_box)[len] != '\n' && (*temp_box)[len] != '\0')
+		len++;
+	if ((*temp_box)[len] == '\n')
 	{
-		buf = malloc(BUFFER_SIZE + 1);
-		if (NULL == buf)
-			return ;
-		char_read = read(fd, buf, BUFFER_SIZE);
-		if (!char_read)
-		{
-			free(buf);
-			return ;
-		}
-		buf[char_read] = '\0';
-		append(list, buf);
+		withline = ft_substr(*temp_box, 0, (len + 1));
+		leftovers = ft_substr(*temp_box, (len + 1), ft_strlen(*temp_box) - (len
+					+ 1));
+		free(*temp_box);
+		*temp_box = leftovers;
+		return (withline);
 	}
+	return (NULL);
+}
+
+char	*do_read(int fd)
+{
+	char	*buffer;
+	int		bytes_read;
+
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (bytes_read <= 0)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	buffer[bytes_read] = '\0';
+	return (buffer);
+}
+
+char	*do_get_next_line(char **temp_box, int fd)
+{
+	char	*second_temp_box;
+	char	*buffer;
+	char	*processed_sentence;
+
+	processed_sentence = find_new_line(temp_box);
+	if (processed_sentence)
+		return (processed_sentence);
+	buffer = do_read(fd);
+	if (!buffer)
+	{
+		processed_sentence = ft_strdup(*temp_box);
+		free(*temp_box);
+		*temp_box = NULL;
+		if (*processed_sentence)
+			return (processed_sentence);
+		free(processed_sentence);
+		return (NULL);
+	}
+	second_temp_box = ft_strjoin(*temp_box, buffer);
+	free(*temp_box);
+	*temp_box = second_temp_box;
+	free(buffer);
+	return (do_get_next_line(temp_box, fd));
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list	*list = NULL;
-	char			*next_line;
+	static char	*temp_box;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	{
+		free(temp_box);
+		temp_box = NULL;
 		return (NULL);
-	create_list(&list, fd);
-	if (list == NULL)
-		return (NULL);
-	next_line = get_line(list);
-	polish_list(&list);
-	return (next_line);
+	}
+	if (!temp_box)
+		temp_box = ft_strdup("");
+	return (do_get_next_line(&temp_box, fd));
 }

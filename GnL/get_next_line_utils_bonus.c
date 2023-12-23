@@ -6,124 +6,96 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:50:30 by sfu               #+#    #+#             */
-/*   Updated: 2023/11/13 17:50:33 by sfu              ###   ########.fr       */
+/*   Updated: 2023/12/23 16:58:07 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <stdlib.h>
 
-int	found_newline(t_list *list)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
-	if (NULL == list)
-		return (0);
-	while (list)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		i = 0;
-		while (list->str_buf[i] && i < BUFFER_SIZE)
-		{
-			if (list->str_buf[i] == '\n')
-				return (1);
-			++i;
-		}
-		list = list->next;
+		i++;
 	}
-	return (0);
+	return (i);
 }
 
-t_list	*find_last_node(t_list *list)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (NULL == list)
+	char	*str;
+	char	*str_ptr;
+
+	if (!s1 || !s2)
 		return (NULL);
-	while (list->next)
-		list = list->next;
-	return (list);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (NULL);
+	str_ptr = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (str_ptr);
 }
 
-/*
- * Copy (string\n]
-*/
-void	copy_str(t_list *list, char *str)
+char	*ft_strdup(char const *src)
 {
-	int	i;
-	int	k;
+	char	*dest;
+	char	*start;
 
-	if (NULL == list)
-		return ;
-	k = 0;
-	while (list)
+	dest = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!dest)
+		return (NULL);
+	start = dest;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (start);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	strlen;
+
+	strlen = 0;
+	while (*src != '\0')
 	{
-		i = 0;
-		while (list->str_buf[i])
+		if (size > 1)
 		{
-			if (list->str_buf[i] == '\n')
-			{
-				str[k++] = '\n';
-				str[k] = '\0';
-				return ;
-			}
-			str[k++] = list->str_buf[i++];
+			*dst = *src;
+			dst++;
+			size--;
 		}
-		list = list->next;
+		src++;
+		strlen++;
 	}
-	str[k] = '\0';
+	if (size > 0)
+	{
+		*dst = '\0';
+	}
+	return (strlen);
 }
 
-/*
- * find the len to new line in
- * my linked list
-*/
-int	len_to_newline(t_list *list)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
-	int	len;
+	char	*substr;
+	size_t	new_len;
 
-	if (NULL == list)
-		return (0);
-	len = 0;
-	while (list)
-	{
-		i = 0;
-		while (list->str_buf[i])
-		{
-			if (list->str_buf[i] == '\n')
-			{
-				++len;
-				return (len);
-			}
-			++i;
-			++len;
-		}
-		list = list->next;
-	}
-	return (len);
-}
-
-/*
- * dealloc all from head
- * set heat->NULL
-*/
-void	dealloc(t_list **list, t_list *clean_node, char *buf)
-{
-	t_list	*tmp;
-
-	if (NULL == *list)
-		return ;
-	while (*list)
-	{
-		tmp = (*list)->next;
-		free((*list)->str_buf);
-		free(*list);
-		*list = tmp;
-	}
-	*list = NULL;
-	if (clean_node->str_buf[0])
-		*list = clean_node;
-	else
-	{
-		free(buf);
-		free(clean_node);
-	}
+	if (s == NULL)
+		return (NULL);
+	if ((unsigned int)ft_strlen(s) < start)
+		return (ft_strdup(""));
+	new_len = ft_strlen(s + start);
+	if (new_len < len)
+		len = new_len;
+	substr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(substr))
+		return (NULL);
+	ft_strlcpy(substr, s + start, len + 1);
+	return (substr);
 }
