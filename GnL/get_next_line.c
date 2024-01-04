@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:48:40 by sfu               #+#    #+#             */
-/*   Updated: 2023/12/27 02:06:45 by sfu              ###   ########.fr       */
+/*   Updated: 2023/12/27 02:21:01 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*get_next_line(int fd)
 {
 	static char	*temp_box;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, NULL, 0) < 0))
+	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, temp_box, 0) < 0))
 	{
 		free(temp_box);
 		temp_box = NULL;
