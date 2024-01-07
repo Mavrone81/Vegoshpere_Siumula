@@ -248,7 +248,7 @@ static int	ft_print_addr(char c, char *hex, va_list ap, unsigned long num)
 	if (c == 'p')
 	{
 		num = (unsigned long)va_arg(ap, void *);
-		if (c == 0)
+		if (num == 0)
 			return (write(1, "(nil)", 5)); 
 		write (1, "0x", 2);
 		count = 2;
