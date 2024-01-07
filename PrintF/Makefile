@@ -8,7 +8,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-all: $(NAME)
+all: $(NAME) combine
 
 $(NAME): $(OBJS)
 	ar rc $@ $^
@@ -19,10 +19,26 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	make -C libft clean
 
 fclean: clean
 	$(RM) $(NAME)
+	make -C libft fclean
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+combine: $(NAME)
+	make -C libft
+	ar -x libft/libft.a
+	ar -rc libftprintf.a $(OBJS) *.o
+	ranlib libftprintf.a
+	rm -f *.o
+
+git:
+	git add .
+	git commit -m "$(GMM)"
+	git push
+
+.PHONY: combine all clean fclean re git
