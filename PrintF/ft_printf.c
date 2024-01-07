@@ -3,28 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_username <your_email@example.com>        +#+  +:+       +#+        */
+/*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 16:28:05 by your_username      #+#    #+#             */
-/*   Updated: 2024/01/08 01:34:26 by sfu              ###   ########.fr       */
+/*   Created: 2024/01/08 02:33:08 by sfu               #+#    #+#             */
+/*   Updated: 2024/01/08 03:18:44 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
-static int  ft_check(const char *i, va_list t);
-static int  ft_print_char(char c, va_list ap);
-static int  ft_print_num(char c, long num, va_list ap);
-static int  ft_print_addr(char c, char *hex, va_list ap, unsigned long num);
+static int	ft_check(const char *i, va_list t);
+static int	ft_print_char(char c, va_list ap);
+static int	ft_print_num(char c, long num, va_list ap);
+static int	ft_print_addr(char c, char *hex, va_list ap, unsigned long num);
 
 int	ft_printf(const char *format, ...)
 {
-	unsigned int    count;
-	va_list 		ap;
+	unsigned int	count;
+	va_list			ap;
 
 	count = 0;
 	va_start(ap, format);
@@ -43,7 +39,7 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-static int  ft_check(const char *c, va_list ap)
+static int	ft_check(const char *c, va_list ap)
 {
 	if (*c == 'c' || *c == 's')
 		return (ft_print_char(*c, ap));
@@ -56,7 +52,7 @@ static int  ft_check(const char *c, va_list ap)
 	return (0);
 }
 
-static int  ft_print_char(char c, va_list ap)
+static int	ft_print_char(char c, va_list ap)
 {
 	unsigned int	count;
 	char			*str;
@@ -84,7 +80,7 @@ static int  ft_print_char(char c, va_list ap)
 
 static int	ft_print_num(char c, long num, va_list ap)
 {
-	int	    count;
+	int	count;
 
 	count = 0;
 	if (c == 'd' || c == 'i')
@@ -130,8 +126,6 @@ static int	ft_print_addr(char c, char *hex, va_list ap, unsigned long num)
 	write (1, &(hex[num % 16]), 1);
 	return (count + 1);
 }
-
-// ANSI color escape codes
 #define ANSI_COLOR_GREEN   "\x1b[33m"
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
@@ -166,9 +160,9 @@ void compare_outputs(const char *format, ...) {
 
     // Compare the outputs
     if (strcmp(format, actual_ft_printf) == 0) {
-        printf(ANSI_COLOR_GREEN "[OK]" ANSI_COLOR_RESET " Match between printf and ft_printf\n");
+        printf(ANSI_COLOR_GREEN "[OK]" ANSI_COLOR_RESET "Match between printf and ft_printf\n");
     } else {
-        printf(ANSI_COLOR_RED "[KO]" ANSI_COLOR_RESET " Mismatch between printf and ft_printf\n");
+        printf(ANSI_COLOR_RED "[KO]" ANSI_COLOR_RESET "Mismatch between printf and ft_printf\n");
     }
 }
 int main() {
@@ -207,7 +201,7 @@ int main() {
     compare_outputs("Printf Pointer 1: 0x7ff7b48139bb\n", "ft_printf Pointer 1: %p\n", ptr1);
     compare_outputs("Printf Pointer 2: 0x7ff7b48139a8\n", "ft_printf Pointer 2: %p\n", ptr2);
     compare_outputs("Printf Pointer 3 (NULL): (nil)\n", "ft_printf Pointer 3 (NULL): %p\n", ptr3);
-    compare_outputs("Printf Pointer 5: 0x7ff7b48139b7\n", "ft_printf Pointer 5: %p\n", ptr5);
+    compare_outputs("Printf Pointer 5: 0x7ff7b48139b7\n","ft_printf Pointer 5: %p\n", ptr5);
 
     // Test cases for %d %i
     int num1 = 42;
@@ -220,7 +214,7 @@ int main() {
     compare_outputs("Printf Integer 2: -12345\n", "ft_printf Integer 2: %i\n", num2);
     compare_outputs("Printf Integer 3: 0\n", "ft_printf Integer 3: %d\n", num3);
     compare_outputs("Printf Integer 4: 987654321\n", "ft_printf Integer 4: %i\n", num4);
-    compare_outputs("Printf Integer 5: -987654321\n", "ft_printf Integer 5: %d\n", num5);
+    compare_outputs("Printf Integer 5: -987654321\n","ft_printf Integer 5: %d\n", num5);
 
     // Test cases for %u
     unsigned int unsignedNum1 = 12345;
@@ -251,22 +245,16 @@ int main() {
     compare_outputs("Printf Hexadecimal (uppercase) 2: 1000\n", "ft_printf Hexadecimal (uppercase) 2: %X\n", hexNum2);
     compare_outputs("Printf Hexadecimal (uppercase) 3: 10\n", "ft_printf Hexadecimal (uppercase) 3: %X\n", hexNum3);
     compare_outputs("Printf Hexadecimal (uppercase) 4: 0\n", "ft_printf Hexadecimal (uppercase) 4: %X\n", hexNum4);
-    compare_outputs("Printf Hexadecimal (uppercase) 5: FFFF\n", "ft_printf Hexadecimal (uppercase) 5: %X\n", hexNum5);
+    compare_outputs("Printf Hexadecimal (uppercase) 5: FFFF\n",	"ft_printf Hexadecimal (uppercase) 5: %X\n", hexNum5);
 
     // Test case for %%
     compare_outputs("Printf Percentage Sign: %%\n", "ft_printf Percentage Sign: %%\n");
     printf("Printf Percentage Sign: %%\n"); // for printf
     ft_printf("ft_printf Percentage Sign: %%\n"); // for ft_printf
     // Test all  
-    compare_outputs("Printf All Check: Char: A, String: Hello, world!, Pointer: 0x7ff7b48139bb, Int (Decimal): 42, Unsigned Int: 12345, Hex (Lowercase): ff, Hex (Uppercase): FF\n",
-                "ft_printf All Check: Char: A, String: Hello, world!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n",
-                &ch1, 42, 12345, 255, 255);
-    compare_outputs("Printf All Check 2: Char: Z, String: Testing 123, Pointer: 0x7ff7b48139ba, Int (Decimal): -12345, Unsigned Int: 0, Hex (Lowercase): 1000, Hex (Uppercase): 1000\n",
-                    "ft_printf All Check 2: Char: Z, String: Testing 123, Pointer: %p, Int (Decimal): %i, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n",
-                    &ch2, -12345, 0, 4096, 4096);
-    compare_outputs("Printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: 0x7ff7b48139b9, Int (Decimal): 2147483647, Unsigned Int: 4294967295, Hex (Lowercase): 10, Hex (Uppercase): 10\n",
-                    "ft_printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n",
-                    &ch3, INT_MAX, UINT_MAX, 16, 16);
+    compare_outputs("Printf All Check: Char: A, String: Hello, world!, Pointer: 0x7ff7b48139bb, Int (Decimal): 42, Unsigned Int: 12345, Hex (Lowercase): ff, Hex (Uppercase): FF\n", "ft_printf All Check: Char: A, String: Hello, world!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch1, 42, 12345, 255, 255);
+    compare_outputs("Printf All Check 2: Char: Z, String: Testing 123, Pointer: 0x7ff7b48139ba, Int (Decimal): -12345, Unsigned Int: 0, Hex (Lowercase): 1000, Hex (Uppercase): 1000\n","ft_printf All Check 2: Char: Z, String: Testing 123, Pointer: %p,Int (Decimal): %i, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch2, -12345, 0, 4096, 4096);
+    compare_outputs("Printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: 0x7ff7b48139b9, Int (Decimal): 2147483647, Unsigned Int: 4294967295, Hex (Lowercase): 10, Hex (Uppercase): 10\n", "ft_printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch3, INT_MAX, UINT_MAX, 16, 16);
 
     return 0;
 }

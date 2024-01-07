@@ -4,6 +4,8 @@ SRCS = ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
+HEADERS = ft_printf.h
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
@@ -14,11 +16,11 @@ $(NAME): $(OBJS)
 	ar rc $@ $^
 	ranlib $@
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) *.gch
 	make -C libft clean
 
 fclean: clean
