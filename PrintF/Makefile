@@ -6,21 +6,22 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-    ar rc $@ $^
-    ranlib $@
+	ar rc $@ $^
+	ranlib $@
 
 %.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-    rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-    rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
