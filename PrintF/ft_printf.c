@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 02:33:08 by sfu               #+#    #+#             */
-/*   Updated: 2024/01/08 03:22:36 by sfu              ###   ########.fr       */
+/*   Updated: 2024/01/12 21:44:05 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,13 +248,16 @@ int main() {
     compare_outputs("Printf Hexadecimal (uppercase) 5: FFFF\n",	"ft_printf Hexadecimal (uppercase) 5: %X\n", hexNum5);
 
     // Test case for %%
-    compare_outputs("Printf Percentage Sign: %%\n", "ft_printf Percentage Sign: %%\n");
-    printf("Printf Percentage Sign: %%\n"); // for printf
-    ft_printf("ft_printf Percentage Sign: %%\n"); // for ft_printf
+    compare_outputs("Printf Percentage Sign: %", "ft_printf Percentage Sign: %");
+    printf("Printf Percentage Sign: %%"); // for printf
+    ft_printf("ft_printf Percentage Sign: %%"); // for ft_printf
     // Test all  
     compare_outputs("Printf All Check: Char: A, String: Hello, world!, Pointer: 0x7ff7b48139bb, Int (Decimal): 42, Unsigned Int: 12345, Hex (Lowercase): ff, Hex (Uppercase): FF\n", "ft_printf All Check: Char: A, String: Hello, world!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch1, 42, 12345, 255, 255);
     compare_outputs("Printf All Check 2: Char: Z, String: Testing 123, Pointer: 0x7ff7b48139ba, Int (Decimal): -12345, Unsigned Int: 0, Hex (Lowercase): 1000, Hex (Uppercase): 1000\n","ft_printf All Check 2: Char: Z, String: Testing 123, Pointer: %p,Int (Decimal): %i, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch2, -12345, 0, 4096, 4096);
     compare_outputs("Printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: 0x7ff7b48139b9, Int (Decimal): 2147483647, Unsigned Int: 4294967295, Hex (Lowercase): 10, Hex (Uppercase): 10\n", "ft_printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch3, INT_MAX, UINT_MAX, 16, 16);
+
+	printf("test %%");
+	//ft_printf("test %%\n");
 
     return 0;
 }
