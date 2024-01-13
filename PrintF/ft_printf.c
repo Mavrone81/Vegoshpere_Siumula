@@ -6,7 +6,7 @@
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 02:33:08 by sfu               #+#    #+#             */
-/*   Updated: 2024/01/12 21:44:05 by sfu              ###   ########.fr       */
+/*   Updated: 2024/01/12 23:48:13 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	ft_printf(const char *format, ...)
 		if (*format != '%' && *format)
 			write (1, &(*format), 1);
 		else if (*++format == '%')
+		{
 			write (1, format, 1);
+			continue;
+		}
 		else
 			count += ft_check(format, ap) - 1;
 		count++;
@@ -257,7 +260,7 @@ int main() {
     compare_outputs("Printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: 0x7ff7b48139b9, Int (Decimal): 2147483647, Unsigned Int: 4294967295, Hex (Lowercase): 10, Hex (Uppercase): 10\n", "ft_printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch3, INT_MAX, UINT_MAX, 16, 16);
 
 	printf("test %%");
-	//ft_printf("test %%\n");
+	ft_printf("test %%\n");
 
     return 0;
 }
