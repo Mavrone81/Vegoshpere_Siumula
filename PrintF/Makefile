@@ -20,7 +20,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) *.gch
+	$(RM) $(OBJS) *.gch *.out
 	make -C libft clean
 
 fclean: clean
