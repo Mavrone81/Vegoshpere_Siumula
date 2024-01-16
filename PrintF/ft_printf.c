@@ -259,8 +259,8 @@ int main() {
     compare_outputs("Printf All Check 2: Char: Z, String: Testing 123, Pointer: 0x7ff7b48139ba, Int (Decimal): -12345, Unsigned Int: 0, Hex (Lowercase): 1000, Hex (Uppercase): 1000\n","ft_printf All Check 2: Char: Z, String: Testing 123, Pointer: %p,Int (Decimal): %i, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch2, -12345, 0, 4096, 4096);
     compare_outputs("Printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: 0x7ff7b48139b9, Int (Decimal): 2147483647, Unsigned Int: 4294967295, Hex (Lowercase): 10, Hex (Uppercase): 10\n", "ft_printf All Check 3: Char: 9, String: Special @#$ characters!, Pointer: %p, Int (Decimal): %d, Unsigned Int: %u, Hex (Lowercase): %x, Hex (Uppercase): %X\n", &ch3, INT_MAX, UINT_MAX, 16, 16);
 
-	printf("test %%");
-	ft_printf("test %%\n");
+	printf("test_f %%\n");
+	ft_printf("test_ft %%\n");
 
     return 0;
 }
