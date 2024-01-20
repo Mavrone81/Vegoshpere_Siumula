@@ -19,7 +19,6 @@ set smartindent
 set autoindent
 set tabstop=4
 set shiftwidth=4
-set expandtab
 
 " Display line and column number in the status line
 set ruler
@@ -74,4 +73,32 @@ nnoremap <C-x> :bd<CR>
 
 " Automatically source the vimrc file when it's saved
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" Enable auto-indentation for curly braces
+inoremap {<CR> {<CR>}<Esc>O
+
+" Function to insert a dynamic 42 header
+function! Insert42Header()
+    let username = "your_username"
+    let header = "/* ************************************************************************** */\n"
+    let header .= "/*                                                                            */\n"
+    let header .= "/*                                                        :::      ::::::::   */\n"
+    let header .= "/*   " . expand("%:t") . "    :+:      :+:    :+:   */\n"
+    let header .= "/*                                                    +:+ +:+         +:+     */\n"
+    let header .= "/*   By: " . username . " <" . username . "@student.42.fr>  +#+  +:+       +#+        */\n"
+    let header .= "/*                                                +#+#+#+#+#+   +#+           */\n"
+    let header .= "/*   Created: " . strftime("%Y/%m/%d %H:%M:%S") . " by " . username . "     #+#    #+#             */\n"
+    let header .= "/*   Updated: " . strftime("%Y/%m/%d %H:%M:%S") . " by " . username . "    ###   ########.fr       */\n"
+    let header .= "/*                                                                            */\n"
+    let header .= "/* ************************************************************************** */\n"
+
+    " Move to the top of the file and insert the header
+    execute "normal! ggO" . header
+
+    " Move the cursor to the line below the header
+    normal! j
+endfunction
+
+" Map F1 to insert a dynamic 42 header
+noremap <F1> :call Insert42Header()<CR>
 
