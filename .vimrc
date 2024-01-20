@@ -101,4 +101,3 @@ endfunction
 
 " Map F1 to insert a dynamic 42 header
 noremap <F1> :call Insert42Header()<CR>
-
