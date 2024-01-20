@@ -47,11 +47,6 @@ match ExtraWhitespace /\s\+$/
 " Enable persistent undo
 set undofile
 
-" Enable backup and swap file handling
-set backup
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-
 " Map F2 to toggle line numbers
 nnoremap <F2> :set invnumber<CR>
 
@@ -79,16 +74,16 @@ inoremap {<CR> {<CR>}<Esc>O
 
 " Function to insert a dynamic 42 header
 function! Insert42Header()
-    let username = "your_username"
+    let username = "sfu"
     let header = "/* ************************************************************************** */\n"
     let header .= "/*                                                                            */\n"
     let header .= "/*                                                        :::      ::::::::   */\n"
-    let header .= "/*   " . expand("%:t") . "    :+:      :+:    :+:   */\n"
+    let header .= "/*   " . expand("%:t") . "                                           :+:      :+:    :+:   */\n"
     let header .= "/*                                                    +:+ +:+         +:+     */\n"
-    let header .= "/*   By: " . username . " <" . username . "@student.42.fr>  +#+  +:+       +#+        */\n"
+    let header .= "/*   By: " . username . " <" . username . "     @student.42.fr>               +#+  +:+       +#+        */\n"
     let header .= "/*                                                +#+#+#+#+#+   +#+           */\n"
-    let header .= "/*   Created: " . strftime("%Y/%m/%d %H:%M:%S") . " by " . username . "     #+#    #+#             */\n"
-    let header .= "/*   Updated: " . strftime("%Y/%m/%d %H:%M:%S") . " by " . username . "    ###   ########.fr       */\n"
+    let header .= "/*   Created: " . strftime("%Y/%m/%d %H:%M:%S") . " by " . username . "                #+#    #+#            */\n"
+    let header .= "/*   Updated: " . strftime("%Y/%m/%d %H:%M:%S") . " by " . username . "               ###   ########         */\n"
     let header .= "/*                                                                            */\n"
     let header .= "/* ************************************************************************** */\n"
 
@@ -101,3 +96,5 @@ endfunction
 
 " Map F1 to insert a dynamic 42 header
 noremap <F1> :call Insert42Header()<CR>
+
+" new changes for vim VIDE 20 Jan
