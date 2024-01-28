@@ -69,8 +69,10 @@ void	rr(t_stack_node **b, bool print);
 void	sa(t_stack_node **a, bool print);
 void	sb(t_stack_node **b, bool print);
 void	ss(t_stack_node **a, t_stack **b, bool print);
+void	last_three(t_stack_node **a);
 
 // Swap Utils
-int	stack_len(t_stack_node *stack);
+int				stack_len(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
+t_stack_node	*find_max(t_stack_node *stack);
 
