@@ -52,7 +52,20 @@ typedef struct  s_stack_node{
     struct s_node		*next;
 } t_stack_node;
 
+//statics
+
 static int	count_words(char*s, char c);
 static char	*get_next_word(char *s, char c);
+static void	push(t_stack_node **dst, t_stack_node **src);
+static void	rotate(t_stacknode **stack);
 
+// Commands
+void	pa(t_stack_node **a, t_stack_node **b, bool print);
+void 	pb(t_stack_node **b, t_stack_node **a, bool print);
+void	ra(t_stack_node **a, bool print);
+void	rb(t_stack_node **b, bool print);
+void	rr(t_stack_node **b, bool print);
+
+// Swap Utils
+t_stack_node	*find_last(t_stack_node *stack);
 
