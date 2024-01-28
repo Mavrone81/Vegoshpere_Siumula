@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_utils.c                                           :+:      :+:    :+:   */
+/*   swap_utils.                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <sfu     @student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,21 @@
 
 #include "../../inc/push_swap.h"
 
+int	stack_len(t_stack_node *stack)
+{
+	int	count;
+
+	if(!stack)
+		return (0);
+	count = 0;
+	while (stack)
+	{
+		stack = stack->next
+		count++;
+	}
+	return (count);
+}
+
 t_stack_node	*find_last(t_stack_node *stack)
 {
 	if (!stack)
@@ -21,4 +36,23 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
+t_stack_node	*find_max(t_stack_node *stack)
+{
+	long			max;
+	t_stack_node	*max_node;
 
+	if(!stack)
+		return (NULL);
+
+	max = LONG_MIN;
+	while (stack)
+	{
+		if (stack->num > max)
+		{
+			max = stack->num;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);
+}

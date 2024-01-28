@@ -71,5 +71,6 @@ void	sb(t_stack_node **b, bool print);
 void	ss(t_stack_node **a, t_stack **b, bool print);
 
 // Swap Utils
+int	stack_len(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
 
