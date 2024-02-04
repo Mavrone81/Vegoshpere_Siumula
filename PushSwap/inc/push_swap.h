@@ -76,3 +76,15 @@ int				stack_len(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 
+// error
+int		syntax_err (char *str_w);
+int		dup_err(t_stack_node *a, int n);
+void	free_stack(t_stack_node **stack);
+void	free_err(t_stack_node **a);
+
+// stacks
+static long 	ft_atol(const char *s);
+static void 	append_node(t_stack_node ** stack, int n);
+void			init_stack_a(t_stack_node **a, char **argv);
+t_stack_node	*retrive_cheapest(t_stack_node *stack);
+void	ready_push(ft_stack_node **stack, t_stack_node *top_node, char s_name);
