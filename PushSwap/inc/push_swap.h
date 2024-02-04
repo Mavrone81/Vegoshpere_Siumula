@@ -54,11 +54,13 @@ typedef struct  s_stack_node{
 
 //statics
 
-static int	count_words(char*s, char c);
+static int	count_w(char*s, char c);
 static char	*get_next_word(char *s, char c);
 static void	push(t_stack_node **dst, t_stack_node **src);
 static void	rotate(t_stacknode **stack);
 static void	swap(t_stack_node **head);
+static long	ft_atol(const char *s);
+static void append_node(t_stack_node ** stack, int n);
 
 // Commands
 void	pa(t_stack_node **a, t_stack_node **b, bool print);
@@ -73,6 +75,7 @@ void	last_three(t_stack_node **a);
 
 // Swap Utils
 int				stack_len(t_stack_node *stack);
+char			**split(char *s, char c);
 t_stack_node	*find_last(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 
@@ -83,8 +86,6 @@ void	free_stack(t_stack_node **stack);
 void	free_err(t_stack_node **a);
 
 // stacks
-static long 	ft_atol(const char *s);
-static void 	append_node(t_stack_node ** stack, int n);
 void			init_stack_a(t_stack_node **a, char **argv);
+void			ready_push(ft_stack_node **stack, t_stack_node *top_node, char s_name);
 t_stack_node	*retrive_cheapest(t_stack_node *stack);
-void	ready_push(ft_stack_node **stack, t_stack_node *top_node, char s_name);

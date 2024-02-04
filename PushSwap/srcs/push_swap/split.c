@@ -12,7 +12,7 @@
 
 #include "../../inc/push_swap.h"
 
-static int	count_words(char *s, char c)
+static int	count_w(char *s, char c)
 {
 	int		count;
 	bool	inside;
@@ -54,4 +54,33 @@ static char	*get_next_word(char *s, char c)
 		next_w[i++] = s[cursor++];
 	next_w[i] = '\0';
 	return (next_w);
+}
+
+char **split(char *s, char c)
+{
+	int		w_count;
+	char	**result_list;
+	int		i;
+
+	i = 0;
+	w_count = count_w(s, c);
+	if (!w_count)
+		exit (1);
+	result_list = malloc(sizeof(char*) * (size_t)(w_count + 2));
+	if (!result_list)
+		return (NULL);
+	while (w_count-- >= 0)
+	{
+		if (i == 0)
+		{
+			result_list[i] = malloc(sizeof(char));
+			if (!rsult_list[i])
+				return (NULL);
+			result_list[i++][0] = '\0';
+			continue ;
+		}
+		result_list[i++] = get_next_word(s, c);
+	}
+	result_list[i] = NULL;
+	return (result_list);
 }
