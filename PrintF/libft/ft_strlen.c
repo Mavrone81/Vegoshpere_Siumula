@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 00:38:18 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/22 12:44:31 by sfu              ###   ########.fr       */
+/*   Created: 2023/09/12 00:02:01 by sfu               #+#    #+#             */
+/*   Updated: 2023/10/21 03:28:28 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+size_t	ft_strlen(const char *str)
 {
-	t_list	*head;
-	t_list	*current;
-	char	*temp;
+	size_t	length;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	current = NULL;
-	while (lst)
+	length = 0;
+	while (str[length] != '\0') 
 	{
-		temp = f(lst->content);
-		head = ft_lstnew(temp);
-		if (!head)
-		{
-			if (temp)
-				del(temp);
-			ft_lstclear(&current, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&current, head);
-		head = head->next;
-		lst = lst->next;
+		length++;
 	}
-	return (current);
+	return (length);
 }

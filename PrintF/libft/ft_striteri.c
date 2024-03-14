@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 00:38:18 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/22 12:44:31 by sfu              ###   ########.fr       */
+/*   Created: 2023/10/01 22:45:24 by sfu               #+#    #+#             */
+/*   Updated: 2023/10/20 01:50:25 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	t_list	*head;
-	t_list	*current;
-	char	*temp;
+	char			*str;
+	unsigned int	counter;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	current = NULL;
-	while (lst)
+	str = s;
+	if (str && f)
 	{
-		temp = f(lst->content);
-		head = ft_lstnew(temp);
-		if (!head)
+		counter = 0;
+		while (str[counter])
 		{
-			if (temp)
-				del(temp);
-			ft_lstclear(&current, del);
-			return (NULL);
+			(*f)(counter, &str[counter]);
+			counter++;
 		}
-		ft_lstadd_back(&current, head);
-		head = head->next;
-		lst = lst->next;
 	}
-	return (current);
 }

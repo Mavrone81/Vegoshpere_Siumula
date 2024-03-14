@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 00:38:18 by sfu               #+#    #+#             */
-/*   Updated: 2023/10/22 12:44:31 by sfu              ###   ########.fr       */
+/*   Created: 2023/09/12 01:17:57 by sfu               #+#    #+#             */
+/*   Updated: 2023/10/21 04:02:10 by sfu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	*ft_memset(void *a, int c, size_t n)
 {
-	t_list	*head;
-	t_list	*current;
-	char	*temp;
+	unsigned char	*arr;
+	unsigned char	ac;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	current = NULL;
-	while (lst)
+	arr = a;
+	ac = c;
+	while (n > 0)
 	{
-		temp = f(lst->content);
-		head = ft_lstnew(temp);
-		if (!head)
-		{
-			if (temp)
-				del(temp);
-			ft_lstclear(&current, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&current, head);
-		head = head->next;
-		lst = lst->next;
+		arr[n - 1] = ac;
+		n--;
 	}
-	return (current);
+	return (a);
 }
+/*
+int main() 
+{
+	char buffer[10];
+	char *result;
+
+	result = ft_memset(buffer, 'A', 5);
+	write(STDOUT_FILENO, result, 5);
+	write(STDOUT_FILENO, "\n", 1);
+
+	return 0;
+}*/
