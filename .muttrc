@@ -1,0 +1,24 @@
+# Set your email address
+set from = "samuel.fu@rmagroup.com.sg"
+set realname = "Sam"
+
+# Set IMAP server and user credentials
+set imap_user = "samuel.fu@rmagroup.com.sg"
+set imap_pass = "P@55w0rd88"
+
+# Set the IMAP server address and port
+set spoolfile = imaps://mail.rmagroup.com.sg:993/INBOX
+
+# Use SSL/TLS for secure connection
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+#set SMTP server add and port
+set smtp_url = "smtp://mail.rmagroup.com.sg:25/"
+set smtp_pass = "P@55w0rd88"
+set smtp_authenticators = "login"
+
+# Other settings
+set folder = imaps://mail.rmagroup.com.sg:993/
+set record = "+Sent Items"
+set postponed = "Drafts"
