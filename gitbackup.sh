@@ -3,28 +3,24 @@
 # Define backup destination directory
 backup_dir="/var/opt/gitlab/backups"
 
-# Create a timestamp for the backup file
-#timestamp=$(date +"%Y%m%d_%H%M%S")
-
-# Define log file
-#log_file="${backup_dir}/Back_up_${timestamp}.log"
-
-# Backup GitLab data and configurations, and log the process
-#sudo tar czvf "${backup_dir}/gitlab_backup_${timestamp}.tar.gz" \
-#    /var/opt/gitlab/git-data \
-#    /var/opt/gitlab/gitlab-rails/uploads \
-#    /etc/gitlab >> "$log_file" 2>&1
-
-# Change ownership of the backup files to userver
-#sudo chown userver:userver "${backup_dir}/gitlab_backup_${timestamp}.tar.gz"
-#sudo chown userver:userver "$log_file"
-
-# Log the deletion process for files older than 7 days
-#find "${backup_dir}" -name "gitlab_backup_*.tar.gz" -type f -mtime +7 -delete >> "$log_file" 2>&1
-#find "${backup_dir}" -name "Back_up_*.log" -type f -mtime +7 -delete >> "$log_file" 2>&1
-
-#Create Backup File
+# Echo message before creating backup
+echo "Creating GitLab backup..."
 /opt/gitlab/bin/gitlab-backup create
+echo "GitLab backup created."
 
-# Delete backups older than 7 Days
+# Echo message before deleting old backups
+echo "Deleting backups older than 7 days..."
 find "${backup_dir}" -type f -name "*.tar" -mtime +7 -exec rm -f {} \;
+echo "Old backups deleted."
+
+# Echo message before setting permissions
+echo "Setting permissions for backup directory..."
+chmod -R 777 "${backup_dir}";
+echo "Permissions set for backup directory."
+
+# Echo message before transferring files to NAS
+echo "Transferring backup files to NAS..."
+
+# Use sshpass to provide password for SCP
+sshpass -p '5@dxuF93' scp -r "${backup_dir}" localadmin@192.168.84.111:/volume1/Git
+echo "Backup files transferred to NAS."
